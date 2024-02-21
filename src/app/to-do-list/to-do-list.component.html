@@ -1,0 +1,36 @@
+<div class="container">
+    <form [formGroup]="formulario">
+
+        <h3>Tarefas</h3>
+
+        <div class="container">
+            
+            <h5>A Fazer:</h5>
+
+            <div *ngFor="let tarefa of tarefas; let i = index">
+                <app-check-box 
+                [describ]="tarefa.descricao" value="{{i}}" 
+                *ngIf="!tarefa.checked" 
+                [dataFinalizacao]="tarefa.dataFinalizacao" 
+                (taskChange)="onTarefaEditada($event)"
+                (taskCheck)="onChangeTask($event)"
+                (taskDelete)="deletar($event)"></app-check-box>
+            </div> 
+
+            <h5>Concluídas:</h5>
+
+            <div *ngFor="let tarefa of tarefasFinalizadas; let i = index">
+                <app-check-box [describ]="tarefa.descricao" 
+                value="{{i}}" *ngIf="tarefa.checked" 
+                [check]="tarefa.checked" 
+                [dataFinalizacao]="tarefa.dataFinalizacao"></app-check-box>
+            </div> 
+
+        </div>         
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-success btn-lg" (click)="adicionar()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ modo === 'adicionar' ? 'Adicionar' : 'Editar' }} Tarefa</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <form [formGroup]="formulario">
+
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Descrição</label>
+              <input type="text" class="form-control" [value]="descricao" id="recipient-name" formControlName="descricao">
+            </div>
+            
+            <div class="mb-3">
+                <label for="data">Data Finalização</label>
+                <input type="text"
+                       placeholder="Prazo finalização"
+                       class="form-control"
+                       [bsValue]="dataFinal"
+                       id="data"
+                       bsDatepicker
+                       [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" formControlName="dataFinalizacao">
+              
+            </div>
+
+        </form>
+
+        <button type="button" class="btn btn-success" (click)="emitirTarefa(index)">{{ modo === 'adicionar' ? 'Adicionar' : 'Editar' }}</button>
+
+        <button type="button" class="btn btn-danger" (click)="onClose()">Cancelar</button>
+
+    </div>
+
+</div>

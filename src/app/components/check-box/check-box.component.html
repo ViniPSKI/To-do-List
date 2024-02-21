@@ -1,0 +1,32 @@
+<div class="card" 
+ [ngClass]="{'border-danger': verificaPrazo(), 'border-success': !verificaPrazo()}" 
+ id="check" 
+ tooltip="Data para finalização: {{dataFinalizacao | date: 'dd/MM/yyyy'}}" 
+ placement="top">
+    
+    <div class="card-body d-flex align-items-center justify-content-between">
+
+        <div class="form-check">
+            <input class="form-check-input"
+                type="checkbox" 
+                value="{{value}}" 
+                (change)="onChangeValue($event, describ)" 
+                id="flexCheck" 
+                [checked]="check" 
+                [disabled]="check"
+            >
+
+            <label class="form-check-label" for="flexCheck">
+                {{describ}}
+            </label>
+
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="!check">
+            <button class="btn btn-secondary"><i class="bi bi-pencil-square" (click)="editarItem(dataFinalizacao, describ)"></i></button>
+            <button class="btn btn-danger" (click)="removerItem(describ)"><i class="bi bi-trash"></i></button>      
+        </div> 
+
+    </div>
+    
+</div>
